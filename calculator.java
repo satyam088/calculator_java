@@ -90,7 +90,10 @@ public class calculator {
                     }
                     operators.put(idx_track++,e);
                 }else if(e==')'||e=='}'||e==']'){
-                    numbers.put(idx_track++,currNum);
+                    if(flag!=2){
+                        numbers.put(idx_track++,currNum);
+                        flag = 2;
+                    }
                     currNum=0;
                     operators.put(idx_track++,e);
                 }
@@ -211,7 +214,6 @@ public class calculator {
         System.out.println("Final Answer : "+result.pop());
         return;
     }
-
 
     // MAIN function for testing purpose only 
     public static void main(String args[]){
