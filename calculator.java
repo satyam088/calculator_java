@@ -69,6 +69,7 @@ public class calculator {
             char e = exp.charAt(i);
             if(e>='0'&&e<='9'){
                 currNum=currNum*10+(e-'0');
+                System.out.println(currNum+" "+i);
                 if(i==exp.length()-1){
                     numbers.put(idx_track++,currNum);
                     currNum=0;
@@ -76,6 +77,7 @@ public class calculator {
                 flag=1;
             }else if(ops.contains(e)){
                 if(flag==1){
+                    // System.out.println(currNum);
                     numbers.put(idx_track++,currNum);
                     flag = 0;
                     currNum=0;
@@ -92,9 +94,9 @@ public class calculator {
                 }else if(e==')'||e=='}'||e==']'){
                     if(flag!=2){
                         numbers.put(idx_track++,currNum);
+                        currNum=0;
                         flag = 2;
                     }
-                    currNum=0;
                     operators.put(idx_track++,e);
                 }
             }
@@ -175,7 +177,17 @@ public class calculator {
             System.out.println("Expression is Invalid");
             return;
         }
-        
+        System.out.println("Post FIx converted Expersssion : ");
+
+        for(int i = 0 ; i<track;i++){
+            if(num.getOrDefault(i,0.0)!=0.0){
+                System.out.print(num.get(i)+" ");
+            }else{
+                System.out.print(op.get(i)+" ");
+            }
+        }
+        System.out.println();
+
         Stack<Double>result = new Stack<>();
         for(int i = 0 ; i<track;i++){
             if(num.getOrDefault(i,0.0)!=0.0){
@@ -205,7 +217,7 @@ public class calculator {
                         System.out.println("Error occured can'nt divide by 0 ");
                         return;
                     }            
-                }else if(oper=='*'){
+                }else if(oper=='^'){
                     res = Math.pow(a,b);
                 }
                 result.push(res);
