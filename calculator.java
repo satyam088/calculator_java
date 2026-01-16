@@ -69,7 +69,7 @@ public class calculator {
             char e = exp.charAt(i);
             if(e>='0'&&e<='9'){
                 currNum=currNum*10+(e-'0');
-                System.out.println(currNum+" "+i);
+                // System.out.println(currNum+" "+i);
                 if(i==exp.length()-1){
                     numbers.put(idx_track++,currNum);
                     currNum=0;
